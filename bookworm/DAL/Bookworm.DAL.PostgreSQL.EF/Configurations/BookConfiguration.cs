@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bookworm.DAL.PostgreSQL.EF.Configurations
+﻿namespace Bookworm.DAL.PostgreSQL.EF.Configurations
 {
     using Bookworm.DAL.PostgreSQL.EF.Context;
 
