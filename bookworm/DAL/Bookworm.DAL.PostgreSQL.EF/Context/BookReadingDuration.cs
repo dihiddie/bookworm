@@ -4,6 +4,8 @@ namespace Bookworm.DAL.PostgreSQL.EF.Context
 {
     public class BookReadingDuration
     {
+        public Guid Id { get; set; }
+
         public Guid BookId { get; set; }
 
         public virtual Book Book { get; set; }

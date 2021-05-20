@@ -4,9 +4,9 @@
 
     public class BookReviews
     {
-        public Guid BookId { get; set; }
+        public Guid Id { get; set; }
 
-        public Guid StatusId { get; set; }
+        public Guid BookId { get; set; }        
 
         public string Review { get; set; }
 

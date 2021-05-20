@@ -5,13 +5,14 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    public class StatusConfiguration : IEntityTypeConfiguration<Status>
+    public class BookStatusConfiguration : IEntityTypeConfiguration<BookStatus>
     {
-        public void Configure(EntityTypeBuilder<Status> builder)
+        public void Configure(EntityTypeBuilder<BookStatus> builder)
         {
-            builder.ToTable("Status", "bookworm");
+            builder.ToTable("BookStatus", "bookworm");
             builder.HasKey(e => e.Id);
-            builder.Property(e => e.Id).IsRequired().ValueGeneratedNever();
+            builder.Property(e => e.Id).IsRequired().HasDefaultValueSql("gen_random_uuid()");
+            builder.HasIndex(e => new { e.BookId, e.StatusId }).IsUnique().HasDatabaseName("AK_BookStatus_BookId_StatusId");
         }
     }
 }
