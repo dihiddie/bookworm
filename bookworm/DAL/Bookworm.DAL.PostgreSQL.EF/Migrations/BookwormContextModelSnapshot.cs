@@ -64,7 +64,8 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasDefaultValueSql("gen_random_uuid()");
 
                     b.Property<Guid>("BookId")
                         .HasColumnType("uuid");
@@ -74,18 +75,21 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BookId");
-
                     b.HasIndex("RatingId");
 
-                    b.ToTable("BookRating");
+                    b.HasIndex("BookId", "RatingId")
+                        .IsUnique()
+                        .HasDatabaseName("AK_BookRating_BookId_RatingId");
+
+                    b.ToTable("BookRating", "bookworm");
                 });
 
             modelBuilder.Entity("Bookworm.DAL.PostgreSQL.EF.Context.BookReadingDuration", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasDefaultValueSql("gen_random_uuid()");
 
                     b.Property<Guid>("BookId")
                         .HasColumnType("uuid");
@@ -100,14 +104,15 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("BookReadingDuration");
+                    b.ToTable("BookReadingDuration", "bookworm");
                 });
 
             modelBuilder.Entity("Bookworm.DAL.PostgreSQL.EF.Context.BookReviews", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasDefaultValueSql("gen_random_uuid()");
 
                     b.Property<Guid>("BookId")
                         .HasColumnType("uuid");
@@ -120,14 +125,15 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BookReviews");
+                    b.ToTable("BookReviews", "bookworm");
                 });
 
             modelBuilder.Entity("Bookworm.DAL.PostgreSQL.EF.Context.BookStatus", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasDefaultValueSql("gen_random_uuid()");
 
                     b.Property<Guid>("BookId")
                         .HasColumnType("uuid");
@@ -140,17 +146,21 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BookId");
-
                     b.HasIndex("StatusId");
 
-                    b.ToTable("BookStatus");
+                    b.HasIndex("BookId", "StatusId")
+                        .IsUnique()
+                        .HasDatabaseName("AK_BookStatus_BookId_StatusId");
+
+                    b.ToTable("BookStatus", "bookworm");
                 });
 
             modelBuilder.Entity("Bookworm.DAL.PostgreSQL.EF.Context.Rating", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uuid");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasDefaultValueSql("gen_random_uuid()");
 
                     b.Property<int>("Number")
                         .HasColumnType("integer");
@@ -158,12 +168,66 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Rating", "bookworm");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("985fcaea-2c67-4313-834d-7df5795e2be6"),
+                            Number = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("4316f1f9-a294-4e2a-b81f-9c6f8127f956"),
+                            Number = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("07210325-f3ba-48f0-b239-454a70708d6c"),
+                            Number = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("95e070f0-f676-4b6b-a5c4-b9842d44ff7c"),
+                            Number = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("42885f94-0b00-4fcd-bc79-86d276c745cc"),
+                            Number = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("39df5aba-edbf-4a3b-a3eb-ab96a417a4a9"),
+                            Number = 6
+                        },
+                        new
+                        {
+                            Id = new Guid("a2390a1a-b3d5-4108-8fc5-7b3924076791"),
+                            Number = 7
+                        },
+                        new
+                        {
+                            Id = new Guid("2dc256a8-2081-40f5-b760-84ae4d27f397"),
+                            Number = 8
+                        },
+                        new
+                        {
+                            Id = new Guid("fecfcdb1-8638-4a58-a526-11d85e25288e"),
+                            Number = 9
+                        },
+                        new
+                        {
+                            Id = new Guid("d65a4a3d-6b0f-45ee-8a9b-6f4fca764066"),
+                            Number = 10
+                        });
                 });
 
             modelBuilder.Entity("Bookworm.DAL.PostgreSQL.EF.Context.Status", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uuid");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasDefaultValueSql("gen_random_uuid()");
 
                     b.Property<string>("Color")
                         .HasColumnType("text");
@@ -174,6 +238,44 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Status", "bookworm");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("ef985a10-135e-4d0d-b7a0-1921f5065089"),
+                            Color = "Gray",
+                            Name = "NotFinished"
+                        },
+                        new
+                        {
+                            Id = new Guid("d6faf158-3ee0-4459-8725-0fe1eb09790f"),
+                            Color = "Green",
+                            Name = "Readed"
+                        },
+                        new
+                        {
+                            Id = new Guid("02fca866-7536-4afc-9f6c-e069555ec219"),
+                            Color = "Yellow",
+                            Name = "WantToRead"
+                        },
+                        new
+                        {
+                            Id = new Guid("7bb082f8-1f60-408a-bb49-b3622894799a"),
+                            Color = "Blue",
+                            Name = "Bought"
+                        },
+                        new
+                        {
+                            Id = new Guid("c7844c7e-87bd-467c-b3c2-237c37d38a65"),
+                            Color = "Red",
+                            Name = "Favorite"
+                        },
+                        new
+                        {
+                            Id = new Guid("6d36db91-75d6-460e-a1e9-a5738a85338e"),
+                            Color = "DarkGreen",
+                            Name = "ReadingNow"
+                        });
                 });
 
             modelBuilder.Entity("Bookworm.DAL.PostgreSQL.EF.Context.Book", b =>

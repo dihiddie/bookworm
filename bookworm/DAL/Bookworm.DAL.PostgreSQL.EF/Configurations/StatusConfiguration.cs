@@ -10,8 +10,7 @@
         public void Configure(EntityTypeBuilder<Status> builder)
         {
             builder.ToTable("Status", "bookworm");
-            builder.HasKey(e => e.Id);
-            builder.Property(e => e.Id).IsRequired().ValueGeneratedNever();
+            builder.Property(e => e.Id).HasDefaultValueSql("gen_random_uuid()");
         }
     }
 }

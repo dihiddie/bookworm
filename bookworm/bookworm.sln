@@ -19,8 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{9CF9B3E7-2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookworm.BAL.Core", "BAL\Core\Bookworm.BAL.Core\Bookworm.BAL.Core.csproj", "{29405E2D-B2A3-4621-9837-0B3B62D64CCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookworm.BAL.Helpers", "BAL\Core\Bookworm.BAL.Helpers\Bookworm.BAL.Helpers.csproj", "{A8899A6C-39DC-4BD8-8F56-2976A24431FE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,10 +37,6 @@ Global
 		{29405E2D-B2A3-4621-9837-0B3B62D64CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29405E2D-B2A3-4621-9837-0B3B62D64CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29405E2D-B2A3-4621-9837-0B3B62D64CCA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8899A6C-39DC-4BD8-8F56-2976A24431FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8899A6C-39DC-4BD8-8F56-2976A24431FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8899A6C-39DC-4BD8-8F56-2976A24431FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8899A6C-39DC-4BD8-8F56-2976A24431FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,7 +46,6 @@ Global
 		{F82897D7-AEC0-4E41-B798-E45FE45D0CE7} = {86F42B4D-7271-4B16-BD66-099677EF694F}
 		{9CF9B3E7-2C3A-4E10-8269-AC921432772C} = {94D47C70-FAF2-420D-8C64-D9FB576F385B}
 		{29405E2D-B2A3-4621-9837-0B3B62D64CCA} = {9CF9B3E7-2C3A-4E10-8269-AC921432772C}
-		{A8899A6C-39DC-4BD8-8F56-2976A24431FE} = {9CF9B3E7-2C3A-4E10-8269-AC921432772C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D097283C-7716-48E7-B968-566A995BC640}

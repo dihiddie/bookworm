@@ -31,7 +31,7 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
                 schema: "bookworm",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "gen_random_uuid()"),
                     BookId = table.Column<Guid>(type: "uuid", nullable: false),
                     Review = table.Column<string>(type: "text", nullable: true),
                     ReviewDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
@@ -46,7 +46,7 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
                 schema: "bookworm",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "gen_random_uuid()"),
                     Number = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -59,7 +59,7 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
                 schema: "bookworm",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "gen_random_uuid()"),
                     Name = table.Column<string>(type: "text", nullable: true),
                     Color = table.Column<string>(type: "text", nullable: true)
                 },
@@ -94,7 +94,7 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
                 schema: "bookworm",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "gen_random_uuid()"),
                     BookId = table.Column<Guid>(type: "uuid", nullable: false),
                     RatingId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
@@ -122,7 +122,7 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
                 schema: "bookworm",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "gen_random_uuid()"),
                     BookId = table.Column<Guid>(type: "uuid", nullable: false),
                     StartDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     EndDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
@@ -144,7 +144,7 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
                 schema: "bookworm",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "gen_random_uuid()"),
                     BookId = table.Column<Guid>(type: "uuid", nullable: false),
                     StatusId = table.Column<Guid>(type: "uuid", nullable: false),
                     StatusSettingDateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
@@ -168,6 +168,38 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                schema: "bookworm",
+                table: "Rating",
+                columns: new[] { "Id", "Number" },
+                values: new object[,]
+                {
+                    { new Guid("985fcaea-2c67-4313-834d-7df5795e2be6"), 1 },
+                    { new Guid("4316f1f9-a294-4e2a-b81f-9c6f8127f956"), 2 },
+                    { new Guid("07210325-f3ba-48f0-b239-454a70708d6c"), 3 },
+                    { new Guid("95e070f0-f676-4b6b-a5c4-b9842d44ff7c"), 4 },
+                    { new Guid("42885f94-0b00-4fcd-bc79-86d276c745cc"), 5 },
+                    { new Guid("39df5aba-edbf-4a3b-a3eb-ab96a417a4a9"), 6 },
+                    { new Guid("a2390a1a-b3d5-4108-8fc5-7b3924076791"), 7 },
+                    { new Guid("2dc256a8-2081-40f5-b760-84ae4d27f397"), 8 },
+                    { new Guid("fecfcdb1-8638-4a58-a526-11d85e25288e"), 9 },
+                    { new Guid("d65a4a3d-6b0f-45ee-8a9b-6f4fca764066"), 10 }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "bookworm",
+                table: "Status",
+                columns: new[] { "Id", "Color", "Name" },
+                values: new object[,]
+                {
+                    { new Guid("ef985a10-135e-4d0d-b7a0-1921f5065089"), "Gray", "NotFinished" },
+                    { new Guid("d6faf158-3ee0-4459-8725-0fe1eb09790f"), "Green", "Readed" },
+                    { new Guid("02fca866-7536-4afc-9f6c-e069555ec219"), "Yellow", "WantToRead" },
+                    { new Guid("7bb082f8-1f60-408a-bb49-b3622894799a"), "Blue", "Bought" },
+                    { new Guid("c7844c7e-87bd-467c-b3c2-237c37d38a65"), "Red", "Favorite" },
+                    { new Guid("6d36db91-75d6-460e-a1e9-a5738a85338e"), "DarkGreen", "ReadingNow" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Book_AuthorId",
                 schema: "bookworm",
@@ -175,10 +207,11 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
                 column: "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookRating_BookId",
+                name: "AK_BookRating_BookId_RatingId",
                 schema: "bookworm",
                 table: "BookRating",
-                column: "BookId");
+                columns: new[] { "BookId", "RatingId" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookRating_RatingId",
@@ -193,10 +226,11 @@ namespace Bookworm.DAL.PostgreSQL.EF.Migrations
                 column: "BookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookStatus_BookId",
+                name: "AK_BookStatus_BookId_StatusId",
                 schema: "bookworm",
                 table: "BookStatus",
-                column: "BookId");
+                columns: new[] { "BookId", "StatusId" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookStatus_StatusId",

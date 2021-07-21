@@ -7,11 +7,9 @@ using Microsoft.Extensions.Hosting;
 
 namespace Bookworm.DAL.PostgreSQL.EF.WebApi
 {
-    using System;
-
     using Bookworm.DAL.PostgreSQL.EF.Context;
-
     using Microsoft.EntityFrameworkCore;
+    using System;
 
     public class Startup
     {
