@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BAL", "BAL", "{94D47C70-FAF2-420D-8C64-D9FB576F385B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{9E915014-D191-47D8-900A-9C1A87C866B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{B87C31DF-1E0E-439E-893E-15A38BD5BABA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookworm.DAL.PostgreSQL.EF", "DAL\Bookworm.DAL.PostgreSQL.EF\Bookworm.DAL.PostgreSQL.EF.csproj", "{D388FBC9-535E-46D1-8934-4E47A4EDAC3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "!Experimentals", "!Experimentals", "{86F42B4D-7271-4B16-BD66-099677EF694F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookworm.DAL.PostgreSQL.EF.WebApi", "!Experimentals\Bookworm.DAL.PostgreSQL.EF.WebApi\Bookworm.DAL.PostgreSQL.EF.WebApi.csproj", "{F82897D7-AEC0-4E41-B798-E45FE45D0CE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{9CF9B3E7-2C3A-4E10-8269-AC921432772C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookworm.BAL.Core", "BAL\Core\Bookworm.BAL.Core\Bookworm.BAL.Core.csproj", "{29405E2D-B2A3-4621-9837-0B3B62D64CCA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D388FBC9-535E-46D1-8934-4E47A4EDAC3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D388FBC9-535E-46D1-8934-4E47A4EDAC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D388FBC9-535E-46D1-8934-4E47A4EDAC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D388FBC9-535E-46D1-8934-4E47A4EDAC3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F82897D7-AEC0-4E41-B798-E45FE45D0CE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F82897D7-AEC0-4E41-B798-E45FE45D0CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F82897D7-AEC0-4E41-B798-E45FE45D0CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F82897D7-AEC0-4E41-B798-E45FE45D0CE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29405E2D-B2A3-4621-9837-0B3B62D64CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29405E2D-B2A3-4621-9837-0B3B62D64CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29405E2D-B2A3-4621-9837-0B3B62D64CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29405E2D-B2A3-4621-9837-0B3B62D64CCA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D388FBC9-535E-46D1-8934-4E47A4EDAC3F} = {9E915014-D191-47D8-900A-9C1A87C866B6}
+		{F82897D7-AEC0-4E41-B798-E45FE45D0CE7} = {86F42B4D-7271-4B16-BD66-099677EF694F}
+		{9CF9B3E7-2C3A-4E10-8269-AC921432772C} = {94D47C70-FAF2-420D-8C64-D9FB576F385B}
+		{29405E2D-B2A3-4621-9837-0B3B62D64CCA} = {9CF9B3E7-2C3A-4E10-8269-AC921432772C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D097283C-7716-48E7-B968-566A995BC640}
+	EndGlobalSection
+EndGlobal
